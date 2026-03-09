@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KIIT Campus Navigator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>🎓 KIIT Campus Navigator</h1>
+    <p>Find the optimal path across campus</p>
+    <button class="dark-toggle" onclick="toggleDark()">🌙</button>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- LEFT : MAP -->
+    <div class="map-panel">
+        <div id="map"></div>
+        <div class="coords" id="coords">Lat: -- , Lng: --</div>
+    </div>
+
+    <!-- RIGHT : RESULT -->
+    <div class="result-panel">
+        <label>Starting Point</label>
+        <select id="start">
+            {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Destination</label>
+        <select id="destination">
+            {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+        </select>
+
+        <button onclick="findPath()">Find Optimal Path</button>
+        <button id="voice-command-btn">Use Voice Command</button>
+        <p id="voice-command-status"></p>
+
+        <div class="result-box" id="result">
+            <h3>Optimal Path Found!</h3>
+            <p><b>Algorithm:</b> A* Search</p>
+            <p><b>Distance:</b> -- km</p>
+            <p><b>Path:</b> --</p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT + FEEDBACK -->
+<section class="contact-wrapper">
+    <div class="contact-card">
+        <h2>📞 Contact Us</h2>
+        <div class="contact-line">📍 KIIT University, Bhubaneswar, Odisha</div>
+        <div class="contact-line">📧 23051825@kiit.ac.in</div>
+        <div class="contact-line">☎ +91 9039860092</div>
+
+        <button class="feedback-btn" onclick="openFeedback()">Give Feedback</button>
+    </div>
+</section>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal" id="feedbackModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeFeedback()">×</span>
+        <h2>📝 Feedback</h2>
+        <p class="sub">We value your feedback</p>
+
+        <input type="text" id="fb-name" placeholder="Your Name">
+        <input type="email" id="fb-email" placeholder="Your Email">
+        <textarea id="fb-comment" placeholder="Your Feedback"></textarea>
+
+        <button onclick="submitFeedback()">Submit</button>
+    </div>
+</div>
+
+<footer>
+    © 2026 KIIT University | Smart Campus Navigator
+</footer>
+
+<script>
+    const campusLocations = {{locations_dict | tojson}};
+</script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/static/js/script.js"></script>
+</body>
+</html>
