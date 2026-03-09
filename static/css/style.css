@@ -341,10 +341,6 @@ footer{
         font-size:13px;
         padding:10px;
     }
-    #voice-command-btn,
-    #voice-command-status{
-        display:none;
-    }
     .result-box{
         font-size:13px;
         padding:12px;
