@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # ─── Email Config ─────────────────────────────────────────────────────────────
 SMTP_SERVER    = "smtp.gmail.com"
-SMTP_PORT      = 587
+SMTP_PORT      = 465
 SENDER_EMAIL   = os.environ.get("SENDER_EMAIL")
 SENDER_PASSWORD= os.environ.get("SENDER_PASSWORD")
 RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL")
@@ -170,8 +170,7 @@ def submit_feedback():
         msg['Subject']  = f"Campus Navigator Feedback from {name}"
         msg.attach(MIMEText(f"Name: {name}\nEmail: {email}\n\nFeedback:\n{comment}", 'plain'))
 
-        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-            server.starttls()
+        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
             server.login(SENDER_EMAIL, SENDER_PASSWORD)
             server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
 
