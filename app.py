@@ -16,7 +16,7 @@ SMTP_SERVER    = "smtp.gmail.com"
 SMTP_PORT      = 587
 SENDER_EMAIL   = os.environ.get("SENDER_EMAIL")
 SENDER_PASSWORD= os.environ.get("SENDER_PASSWORD")
-RECEIVER_EMAIL = ["23051825@kiit.ac.in", "23053034@kiit.ac.in"]
+RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL")
 
 # ─── Campus Locations (Real KIIT Coordinates) ─────────────────────────────────
 LOCATIONS = {
@@ -166,7 +166,7 @@ def submit_feedback():
     try:
         msg             = MIMEMultipart()
         msg['From']     = SENDER_EMAIL
-        msg['To']       = ", ".join(RECEIVER_EMAIL)
+        msg['To']       = RECEIVER_EMAIL
         msg['Subject']  = f"Campus Navigator Feedback from {name}"
         msg.attach(MIMEText(f"Name: {name}\nEmail: {email}\n\nFeedback:\n{comment}", 'plain'))
 
