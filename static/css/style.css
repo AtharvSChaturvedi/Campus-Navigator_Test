@@ -277,18 +277,111 @@ footer{
     font-size:13px;
 }
 
-/* Mobile */
+/* ── Tablet ──────────────────────────────────────── */
 @media(max-width:900px){
     .main{
         flex-direction:column;
         padding:16px;
+        align-items:stretch;
     }
     .map-panel,
     .result-panel{
         width:100%;
     }
     #map{
-        height:340px;
+        height:380px;
+    }
+}
+
+/* ── Mobile ──────────────────────────────────────── */
+@media(max-width:600px){
+    header{
+        padding:20px 52px 20px 16px;
+    }
+    header h1{
+        font-size:20px;
+    }
+    header p{
+        font-size:12px;
+    }
+    .dark-toggle{
+        right:12px;
+        width:32px;
+        height:32px;
+        font-size:15px;
+    }
+    .main{
+        padding:10px;
+        gap:10px;
+    }
+    .map-panel{
+        padding:8px;
+    }
+    #map{
+        height:260px;
+    }
+    .coords{
+        font-size:11px;
+        padding:4px 8px;
+        bottom:18px;
+        left:18px;
+    }
+    .result-panel{
+        padding:14px;
+    }
+    label{
+        font-size:13px;
+    }
+    select{
+        font-size:13px;
+        padding:9px 10px;
+    }
+    .result-panel button,
+    .modal-content button{
+        font-size:13px;
+        padding:10px;
+    }
+    #voice-command-btn,
+    #voice-command-status{
+        display:none;
+    }
+    .result-box{
+        font-size:13px;
+        padding:12px;
+    }
+    .result-box h3{
+        font-size:14px;
+    }
+    .result-box p{
+        margin:3px 0;
+    }
+    .contact-wrapper{
+        padding:20px 12px 28px;
+    }
+    .contact-card{
+        padding:20px 16px;
+        border-radius:16px;
+    }
+    .contact-card h2{
+        font-size:18px;
+    }
+    .contact-line{
+        font-size:13px;
+    }
+    .feedback-btn{
+        font-size:13px;
+        padding:9px 24px;
+    }
+    .modal-content{
+        padding:24px 16px;
+        width:95%;
+    }
+    .modal-content h2{
+        font-size:18px;
+    }
+    footer{
+        font-size:12px;
+        padding:10px;
     }
 }
 
